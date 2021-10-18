@@ -5,13 +5,13 @@
 
 with customers as (
 
-    select * from `analytics-engineers-club.coffee_shop.customers`
+    select * from {{ ref('stg_coffee_shop__customers')}}
 
 )
 
 , orders as (
 
-    select * from `analytics-engineers-club.coffee_shop.orders`
+    select * from {{ ref('stg_coffee_shop__orders')}}
 
 )
 

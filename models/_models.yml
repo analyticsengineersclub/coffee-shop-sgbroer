@@ -1,0 +1,28 @@
+version: 2
+
+models:
+  - name: customers
+    description: '{{ doc("customers") }}'
+    columns:
+      - name: customer_id
+        description: Primary key of the model
+        tests:
+          - unique
+          - not_null
+
+  - name: daily_first_time_customers
+    description: '{{ doc("daily_first_time_customers") }}'
+    columns:
+      - name: first_order_date
+        description: Calendar date
+        tests:
+          - unique
+          - not_null
+      - name: customers_first_ordered
+        description: A count of unique customers with the first order on the calendar date
+        tests:
+          - unique
+          - not_null
+          - accepted_values:
+                values: [1, 1000, 100000, 1000000]
+                quote: false
